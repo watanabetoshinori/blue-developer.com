@@ -1,0 +1,71 @@
+---
+layout: default
+---
+<article class="app">
+  <header class="app-hero">
+    {% include app-icon.html app=page size=128 class="app-icon-hero" alt="" %}
+    <h1 class="display">{{ page.title }}</h1>
+    {% if page.taglines.size > 1 %}
+      <p class="app-description rotator" data-rotator>
+        {% for tagline in page.taglines %}
+          <span{% if forloop.first %} class="is-active"{% else %} aria-hidden="true"{% endif %}>{{ tagline }}</span>
+        {% endfor %}
+      </p>
+      <script src="{{ '/assets/js/rotator.js' | relative_url }}" defer></script>
+    {% else %}
+      <p class="app-description">{{ page.description }}</p>
+    {% endif %}
+
+    <div class="store">
+      {% if page.app_store_url %}
+        <a class="store-badge" href="{{ page.app_store_url }}">
+          <img src="{{ '/assets/images/app-store-badge.svg' | relative_url }}" alt="Download on the App Store" height="40">
+        </a>
+      {% else %}
+        <span class="store-soon">Coming Soon</span>
+      {% endif %}
+    </div>
+  </header>
+
+  <nav class="links" aria-label="{{ page.title }}">
+    <a href="#privacy">Privacy Policy</a>
+    <a href="#support">Support</a>
+  </nav>
+
+  {% if page.screenshots.size > 0 %}
+    <div class="screenshots">
+      {% for screenshot in page.screenshots %}
+        <img src="{{ screenshot | relative_url }}" alt="{{ page.title }} screenshot {{ forloop.index }}" loading="lazy">
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="prose">
+    {{ content }}
+
+    {% for feature in page.features %}
+      <h3>{{ feature.title }}</h3>
+      <p>{{ feature.description }}</p>
+    {% endfor %}
+  </div>
+
+  <hr class="rule">
+
+  <section id="privacy" class="prose section">
+    <h2>Privacy Policy</h2>
+    {% if page.privacy_summary %}
+      <p>{{ page.privacy_summary }}</p>
+    {% endif %}
+    {{ page.privacy | markdownify }}
+    {% if page.privacy_updated %}
+      <p class="section-updated">Last updated {{ page.privacy_updated | date: "%B %-d, %Y" }}</p>
+    {% endif %}
+  </section>
+
+  <hr class="rule">
+
+  <section id="support" class="prose section">
+    <h2>Support</h2>
+    <p>For questions, bug reports, or feedback, email <a href="mailto:{{ page.support_email }}?subject={{ page.title | uri_escape }}">{{ page.support_email }}</a>.</p>
+  </section>
+</article>

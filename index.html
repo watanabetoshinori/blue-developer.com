@@ -1,0 +1,21 @@
+---
+layout: default
+---
+{% assign apps = site.apps | sort: "order", "last" %}
+<header class="home-header">
+  <h1 class="display">{{ site.title | replace: "Blue", '<span class="accent">Blue</span>' }}</h1>
+</header>
+
+<ul class="app-list">
+  {% for app in apps %}
+    <li>
+      <a class="app-row" href="{{ app.url | relative_url }}">
+        {% include app-icon.html app=app size=64 alt="" %}
+        <div class="app-row-text">
+          <h2 class="app-row-title">{{ app.title }}</h2>
+          <p class="app-row-description">{{ app.description }}</p>
+        </div>
+      </a>
+    </li>
+  {% endfor %}
+</ul>

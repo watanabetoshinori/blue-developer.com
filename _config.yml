@@ -1,0 +1,28 @@
+title: Blue Developer
+url: https://blue-developer.com
+lang: en
+
+# Disable the default GitHub Pages theme (Primer); this site uses its own layouts and CSS.
+theme: null
+
+collections:
+  apps:
+    output: true
+    permalink: /apps/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: apps
+    values:
+      layout: app
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle
