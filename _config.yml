@@ -8,7 +8,7 @@ theme: null
 collections:
   apps:
     output: true
-    permalink: /:name.html
+    permalink: /:name/
 
 defaults:
   - scope:

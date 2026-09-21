@@ -1,5 +1,5 @@
 ---
-# The file name (issue) becomes the URL: /issue.html
+# The file name (issue) becomes the URL: /issue/
 title: ":)ssue"
 description: Your own newspaper, delivered every morning and evening.
 # Shown one after another under the app name, in this order. `description` is still used on the home page and in search results.
